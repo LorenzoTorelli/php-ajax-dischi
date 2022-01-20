@@ -73,5 +73,14 @@ $database = [
 ];
 
 
+$data = array_filter($database, fuction ($e) {
+    if (strpos($e["genre"], $_GET["selez"])) {
+        $database = $e;
+    }
+    else {
+        $data = $database;
+    }
+})
+
 header("Content-Type: aaplication/json");
-echo json_encode($database);
+echo json_encode($data);
