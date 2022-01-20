@@ -12,12 +12,27 @@
 <body>
 
     <div id="app">
-        <div class="filter-bar">
-
-        </div>
-        <div class="disc-container">
-            <div v-for="(el, index) in database" :key = "index">
-                <img :src="el.poster" alt="">
+        <div class="main-container">
+            <div class="filter-bar">
+                <select name="genere" id="genere" v-model="selez" @change="$emit('cambio', selez)">
+                    <option value="Rock">Rock</option>
+                    <option value="Pop">Pop</option>
+                    <option value="Jazz">Jazz</option>
+                    <option value="Metal">Metal</option>
+                    <option value="">All</option>
+                </select>
+            </div>
+            <div class="disc-container">
+                <div class="card" v-for="(el, index) in database" :key = "index">
+                    <div class="img-container">
+                        <img :src="el.poster" alt="">
+                    </div>
+                    <div class="text">
+                        <h4>{{el.title}}</h4>
+                        <h5>{{el.author}}</h5>
+                        <p>{{el.year}}</p>
+                    </div>
+                </div>
             </div>
         </div>
        
