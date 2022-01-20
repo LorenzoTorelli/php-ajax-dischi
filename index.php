@@ -14,16 +14,16 @@
     <div id="app">
         <div class="main-container">
             <div class="filter-bar">
-                <select name="genere" id="genere" v-model="selez" @change="$emit('cambio', selez)">
+                <select name="genere" id="genere" v-model="selez" >
                     <option value="Rock">Rock</option>
                     <option value="Pop">Pop</option>
                     <option value="Jazz">Jazz</option>
                     <option value="Metal">Metal</option>
-                    <option value="">All</option>
+                    <option value="" selected="selected">All</option>
                 </select>
             </div>
             <div class="disc-container">
-                <div class="card" v-for="(el, index) in database" :key = "index">
+                <div class="card" v-for="(el, index) in filtraSchede" :key = "index">
                     <div class="img-container">
                         <img :src="el.poster" alt="">
                     </div>
