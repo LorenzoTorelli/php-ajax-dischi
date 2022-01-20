@@ -72,26 +72,21 @@ $database = [
 	]
 ];
 
-$filtro = $_GET["selez"];
+$filtro = $_GET["selezione"];
 $data = [];
-foreach($database as $el) {
-    if ($el["genre"] == $filtro) {
-        $data[] = $el;
-    }
-    else {
-        $data = $database
-    }
+
+if(empty($filtro)) {
+    $data = $database; 
 }
+else {
+    foreach($database as $el) {
+        if ($el["genre"] === $filtro) {
+            $data[] = $el;
+        }
 
-
-// $data = array_filter($database, function ($e) {
-//     if (strpos($e["genre"], $filtro) !== false) {
-//         $database = $e;
-//     }
-//     else {
-//         $data = $database;
-//     }
-// })
+    };
+}
 
 header("Content-Type: aaplication/json");
 echo json_encode($data);
+
